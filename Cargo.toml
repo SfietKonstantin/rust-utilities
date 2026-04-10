@@ -1,5 +1,8 @@
 [workspace]
-members = ["ffi-utilities"]
+members = ["ffi-utilities", "ffi-utilities-test/demo-rust-lib"]
 resolver = "3"
 
 [workspace.dependencies]
+ffi-utilities = { path = "ffi-utilities" }
+
+cbindgen = "0.29"                               
