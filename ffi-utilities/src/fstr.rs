@@ -63,7 +63,7 @@ impl Drop for FString {
 
 impl From<CString> for FString {
     fn from(value: CString) -> Self {
-        FString::new(value)
+        Self::new(value)
     }
 }
 
