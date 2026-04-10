@@ -1,4 +1,4 @@
-use ffi_utilities::{CStringExt, FBox, FStr};
+use ffi_utilities::{CStringExt, FBox, FSlice, FStr, FString};
 use std::ffi::CString;
 use std::os::raw::c_char;
 
@@ -39,4 +39,18 @@ pub extern "C" fn service_print_string(service: &Service) {
 #[unsafe(no_mangle)]
 pub extern "C" fn service_set_string(service: &mut Service, value: FStr) {
     service.1 = CString::from(value.as_c_str());
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn string_slice_of_two_new(first: FStr, second: FStr) -> FSlice<FString> {
+    let first = FString::new(CString::from(first.as_c_str()));
+    let second = FString::new(CString::from(second.as_c_str()));
+
+    let slice = [first, second];
+    FSlice::from(slice)
+}
+
+#[unsafe(no_mangle)]
+pub extern "C" fn string_slice_delete(slice: FSlice<FString>) {
+    drop(slice);
 }

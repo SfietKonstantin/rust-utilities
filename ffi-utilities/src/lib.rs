@@ -16,8 +16,10 @@
 
 mod cstrext;
 mod fbox;
+mod fslice;
 mod fstr;
 
 pub use self::cstrext::*;
 pub use self::fbox::*;
+pub use self::fslice::*;
 pub use self::fstr::*;

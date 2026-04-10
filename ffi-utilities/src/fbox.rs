@@ -36,7 +36,7 @@ unsafe impl<T> Sync for FBox<T> where Box<T>: Sync {}
 
 impl<T> From<T> for FBox<T> {
     fn from(value: T) -> Self {
-        FBox::new(value)
+        Self::new(value)
     }
 }
 
