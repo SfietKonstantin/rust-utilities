@@ -2,8 +2,11 @@ use std::ptr::{NonNull, null_mut};
 
 /// A boxed value represented by a pointer
 ///
-/// This struct wraps a value in a `Box`, but exposes
-/// it as a pointer. The pointer can never be null.
+/// This struct wraps a boxed (allocated) value and exposes it as a pointer
+/// to FFI. The pointer can never be null.
+///
+/// This type is usually used for returned types, and to avoid memory leaks
+/// a function to drop this struct must be provided.
 ///
 /// For optional values (and nullable pointers), see [FNullableBox]
 #[repr(transparent)]
@@ -39,8 +42,11 @@ impl<T> From<T> for FBox<T> {
 
 /// An optional boxed value represented by a pointer
 ///
-/// This struct wraps its optional content in a `Box`, but exposes
-/// it as a pointer. The pointer can then be `nullptr`.
+/// This struct wraps a boxed (allocated) value and exposes it as a pointer
+/// to FFI. The pointer can be null.
+///
+/// This type is usually used for returned types, and to avoid memory leaks
+/// a function to drop this struct must be provided.
 ///
 /// For non-optional values it's best to use [FBox]
 #[repr(transparent)]
