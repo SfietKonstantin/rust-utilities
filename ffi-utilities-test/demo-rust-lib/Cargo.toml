@@ -1,0 +1,13 @@
+[package]
+name = "ffi-utilities-demo-rust-lib"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+ffi-utilities = { workspace = true }
+
+[build-dependencies]
+cbindgen = { workspace = true }
