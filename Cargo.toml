@@ -1,0 +1,5 @@
+[workspace]
+members = ["ffi-utilities"]
+resolver = "3"
+
+[workspace.dependencies]
