@@ -10,4 +10,4 @@ crate-type = ["staticlib"]
 ffi-utilities = { workspace = true }
 
 [build-dependencies]
-cbindgen = { workspace = true }
+ffi-utilities-build = { workspace = true }

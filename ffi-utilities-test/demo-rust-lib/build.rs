@@ -2,7 +2,5 @@ use std::env;
 
 fn main() {
     let crate_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-    cbindgen::generate(crate_dir)
-        .unwrap()
-        .write_to_file("demo-rust-lib.h");
+    ffi_utilities_build::generate_header(crate_dir, "demo-rust-lib.h").unwrap();
 }

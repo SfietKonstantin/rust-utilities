@@ -1,0 +1,25 @@
+---
+source: ffi-utilities-build/src/lib.rs
+expression: output
+---
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+typedef struct Opaque Opaque;
+
+typedef struct FSlice_FString {
+  char **items;
+  uintptr_t size;
+} FSlice_FString;
+
+void consume_value(const char *value);
+
+char *produce_value(void);
+
+struct Opaque *new_instance(void);
+
+void delete_instance(struct Opaque *instance);
+
+struct FSlice_FString new_slice(void);
