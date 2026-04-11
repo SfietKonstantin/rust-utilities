@@ -7,6 +7,7 @@
 //! are `extern "C"` and discovered by `cbindgen`.
 //!
 //! - [FBox] and [FNullableBox] are allocated values represented as pointers
+//! - [FSlice] is an allocated slice represented as a pointer and size.
 //! - [FStr] is a borrowed `const char *`
 //! - [FString] and [FNullableString] are allocated strings represented as pointers
 //!
