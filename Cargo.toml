@@ -1,8 +1,18 @@
 [workspace]
-members = ["ffi-utilities", "ffi-utilities-test/demo-rust-lib"]
+members = [
+    "ffi-utilities",
+    "ffi-utilities-build",
+
+    # Tests
+    "ffi-utilities-build/tests/transparent-substitution",
+    "ffi-utilities-test/demo-rust-lib"
+]
+default-members = ["ffi-utilities", "ffi-utilities-build"]
 resolver = "3"
 
 [workspace.dependencies]
 ffi-utilities = { path = "ffi-utilities" }
+ffi-utilities-build = { path = "ffi-utilities-build" }
 
-cbindgen = "0.29"                               
+cbindgen = { version = "0.29", features = ["unstable_ir"] }
+insta = "1.47"
