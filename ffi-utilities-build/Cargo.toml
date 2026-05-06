@@ -7,4 +7,9 @@ edition = "2024"
 cbindgen = { workspace = true }
 
 [dev-dependencies]
+cc = { workspace = true }
+current_platform = { workspace = true }
 insta = { workspace = true }
+
+[lints]
+workspace = true

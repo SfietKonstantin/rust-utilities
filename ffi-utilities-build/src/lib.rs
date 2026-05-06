@@ -81,7 +81,9 @@ struct TransparentMapping(HashMap<String, Struct>);
 
 impl TransparentMapping {
     fn find_type(&self, name: &str) -> Option<Type> {
-        self.0.get(name).map(|s| s.fields[0].ty.clone())
+        let s = self.0.get(name)?;
+        let field = s.fields.first()?;
+        Some(field.ty.clone())
     }
 
     fn resolve_type(&self, ty: Type) -> Type {
@@ -205,32 +207,4 @@ fn post_process_function_argument(
 ) -> FunctionArgument {
     arg.ty = mapping.resolve_type(arg.ty);
     arg
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use cbindgen::{Builder, Language};
-    use std::path::Path;
-
-    fn generate_header_for_crate(dir: &str) -> String {
-        let mut output = Vec::new();
-        let bindings = Builder::new()
-            .with_language(Language::C)
-            .with_parse_deps(true)
-            .with_parse_include(&["ffi-utilities"])
-            .with_crate(Path::new("tests").join(dir))
-            .with_documentation(false)
-            .generate()
-            .unwrap();
-        post_process_bindings(bindings).write(&mut output);
-
-        String::from_utf8(output).unwrap()
-    }
-
-    #[test]
-    fn test_transparent_substitution() {
-        let output = generate_header_for_crate("transparent-substitution");
-        insta::assert_snapshot!(output);
-    }
 }

@@ -11,3 +11,6 @@ ffi-utilities = { workspace = true }
 
 [build-dependencies]
 ffi-utilities-build = { workspace = true }
+
+[lints]
+workspace = true

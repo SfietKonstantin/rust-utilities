@@ -1,5 +1,5 @@
 ---
-source: ffi-utilities-build/src/lib.rs
+source: ffi-utilities-build/tests/test_vs_snapshots.rs
 expression: output
 ---
 #include <stdarg.h>
